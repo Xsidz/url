@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickLink - URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo" onclick="showPage('home')">QuickLink</a>
+            <div class="nav-buttons">
+                <div id="auth-buttons">
+                    <a href="#" class="btn btn-secondary" onclick="showPage('login')">Login</a>
+                    <a href="#" class="btn btn-primary" onclick="showPage('signup')">Sign Up</a>
+                </div>
+                <div id="user-menu" style="display: none;">
+                    <span id="welcome-text" style="color: white; margin-right: 1rem;"></span>
+                    <a href="#" class="btn btn-secondary" onclick="showPage('dashboard')">Dashboard</a>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="home-hero">
+                <h1>Shorten Your URLs Instantly</h1>
+                <p>Create short, memorable links in seconds. Track clicks and manage your URLs with ease.</p>
+            </div>
+            
+            <div class="url-form">
+                <form id="shortenForm">
+                    <div class="input-group">
+                        <input type="url" id="longUrl" placeholder="Enter your long URL here..." required>
+                        <button type="submit" class="btn-submit">Shorten URL</button>
+                    </div>
+                </form>
+                
+                <div id="result" class="result">
+                    <h3>Your shortened URL:</h3>
+                    <div class="shortened-url">
+                        <input type="text" id="shortUrl" readonly>
+                        <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+                    </div>
+                    <div id="urlStats" class="url-stats">
+                        <div class="stat-item">
+                            <strong>Original:</strong> <span id="originalUrl"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login" class="page">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2>Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="auth-btn">Login</button>
+                    </form>
+                    <p style="text-align: center;">
+                        Don't have an account? 
+                        <a href="#" class="auth-link" onclick="showPage('signup')">Sign up</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup Page -->
+        <div id="signup" class="page">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2>Sign Up</h2>
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signupName">Full Name</label>
+                            <input type="text" id="signupName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email</label>
+                            <input type="email" id="signupEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="auth-btn">Sign Up</button>
+                    </form>
+                    <p style="text-align: center;">
+                        Already have an account? 
+                        <a href="#" class="auth-link" onclick="showPage('login')">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page">
+            <div class="dashboard">
+                <h2>Your Dashboard</h2>
+                
+                <div class="user-info">
+                    <h3>Welcome back!</h3>
+                    <p>Manage your shortened URLs and track their performance.</p>
+                </div>
+
+                <div class="urls-list">
+                    <h3>Your URLs</h3>
+                    <div id="urlsList">
+                        <!-- URLs will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
