@@ -9,7 +9,7 @@ export const generateShortUrl = async (req, res) => {
             return res.status(400).json({ message: "URL is required!" });
         }
 
-        // Basic URL validation
+        
         try {
             new URL(url);
         } catch (error) {
@@ -24,7 +24,7 @@ export const generateShortUrl = async (req, res) => {
             visitHistory: [],
         });
 
-        // Return the complete shortened URL
+        
         const baseUrl = `${req.protocol}://${req.get('host')}`;
         const shortUrl = `${baseUrl}/${shortId}`;
 
@@ -53,7 +53,7 @@ export const redirectUser = async (req, res) => {
                     }
                 }
             },
-            { new: true } // Return the updated document
+            { new: true } 
         );
 
         if (!entry) {
@@ -68,7 +68,7 @@ export const redirectUser = async (req, res) => {
     }
 };
 
-// Optional: Get analytics for a short URL
+
 export const getUrlAnalytics = async (req, res) => {
     try {
         const { shortId } = req.params;

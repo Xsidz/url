@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  backend :
+   build :
+    context : .
+    dockerfile : Dockerfile.backend
+   ports : 
+    - "3001:3001"
+   restart : unless-stopped
+
+  frontend : 
+    build : 
+     context : .
+     dockerfile : Dockerfile.frontend
+    ports:
+      - "5500:80" 
+    restart : unless-stopped
