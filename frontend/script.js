@@ -1,5 +1,5 @@
-// Configuration - Update these with your backend endpoints
-        const API_BASE_URL = 'http://localhost:3001/auth'; // Updated to match your auth routes
+
+        const API_BASE_URL = 'http://localhost:3001/auth'; 
         
         // Global state
         let currentUser = null;
