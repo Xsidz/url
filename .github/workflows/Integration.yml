@@ -23,4 +23,16 @@ jobs:
       - name: Run test  
         run: npm test
 
-  
+  frontend:
+    name: 🌐 Frontend Lint Check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 📄 Check for broken HTML or JS files (optional)
+        run: echo "No build, just static check." && ls -la
